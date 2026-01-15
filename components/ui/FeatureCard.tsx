@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface FeatureCardProps {
-    icon: string;
+    icon: React.ReactNode;
     title: string;
     description: string;
     visual?: string;

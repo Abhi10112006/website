@@ -31,13 +31,13 @@ export default function ContactSection() {
                         </div>
 
                         <h2 className="text-4xl md:text-6xl font-black mb-6">
-                            Found a Bug? <br />
-                            <span className="gradient-text">We Kill It. Fast.</span>
+                            Found a Bug? <span className="text-accent-emerald">Want a Feature?</span> <br />
+                            <span className="gradient-text">We Listen. Fast.</span>
                         </h2>
 
                         <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-12">
                             Don't deal with automated bots or 3-day wait times.
-                            Report an issue and get a personal response from the developer.
+                            Report an issue or suggest a new feature and get a personal response.
                         </p>
 
                         {/* Guarantee Card */}
@@ -66,7 +66,7 @@ export default function ContactSection() {
                         {/* Contact Action */}
                         <div>
                             <a
-                                href="mailto:abhiyaduvanshi@zohomail.in?subject=Bug%20Report%20-%20Abhi's%20Ledger"
+                                href="mailto:abhiyaduvanshi@zohomail.in?subject=Bug%20Report%20%2F%20Feature%20Request%20-%20Abhi's%20Ledger"
                                 className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-text-primary text-bg-deep font-bold text-lg rounded-2xl overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/20 no-underline"
                             >
                                 <span className="relative z-10 flex items-center gap-3">

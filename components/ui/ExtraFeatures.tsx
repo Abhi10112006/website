@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const extraFeatures = [
-    { icon: '💱', title: 'Multi-Currency', description: '₹, $, €, £, ¥ support built-in' },
+    { icon: '⌨️', title: 'Virtual Keyboard Toggle', description: 'Resizable, haptic feedback, & 3 themes' },
     { icon: '🎓', title: 'Interactive Tour', description: '10-step onboarding walkthrough' },
     { icon: '⏰', title: 'Overdue Alerts', description: 'Never miss a payment deadline' },
     { icon: '🔍', title: 'Profile Search', description: 'Find anyone instantly' },

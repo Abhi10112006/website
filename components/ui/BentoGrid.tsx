@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { QrCode } from 'lucide-react';
 import FeatureCard from './FeatureCard';
 
 const features = [
@@ -14,11 +15,18 @@ const features = [
         visual: 'trust-score',
     },
     {
+        icon: <QrCode className="w-8 h-8 text-white/90" />,
+        title: 'UPI QR Code Generator',
+        description:
+            'Generate custom payment cards with specific amounts. Share directly to WhatsApp or let friends scan to pay instantly via any UPI app. No more "I\'ll pay you later" excuses.',
+        size: 'large',
+    },
+    {
         icon: '🧮',
         title: 'Smart Interest',
         description:
             'Daily, monthly, or yearly rates. Even supports "no interest if paid by deadline" deals.',
-        visual: 'calculator',
+        visual: undefined,
     },
     {
         icon: '📊',
@@ -39,13 +47,6 @@ const features = [
         title: 'Visual Engine',
         description:
             '5 themes, adjustable blur, textures, grain effects, and corner styles. Make it yours.',
-    },
-    {
-        icon: '📱',
-        title: 'Works Offline. Installs Like an App.',
-        description:
-            'Your data stays on your device—100% private. Install as a Progressive Web App on any phone or computer. No account required.',
-        size: 'large',
     },
 ];
 
