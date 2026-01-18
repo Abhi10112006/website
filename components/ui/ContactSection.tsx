@@ -31,13 +31,14 @@ export default function ContactSection() {
                         </div>
 
                         <h2 className="text-4xl md:text-6xl font-black mb-6">
-                            Found a Bug? <span className="text-accent-emerald">Want a Feature?</span> <br />
+                            Found a Bug? <br />
+                            <span className="text-accent-emerald">Want a Feature?</span> <br />
                             <span className="gradient-text">We Listen. Fast.</span>
                         </h2>
 
                         <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-12">
-                            Don't deal with automated bots or 3-day wait times.
-                            Report an issue or suggest a new feature and get a personal response.
+                            Don't deal with automated bots or 3-day wait times. Report an issue or
+                            suggest a new feature and get a personal response.
                         </p>
 
                         {/* Guarantee Card */}

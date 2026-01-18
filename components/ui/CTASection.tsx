@@ -1,12 +1,24 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import AndroidInstallModal from './AndroidInstallModal';
 
 export default function CTASection() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+    const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
+
+    const handleLaunchApp = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (/android/.test(userAgent)) {
+            setIsInstallModalOpen(true);
+        } else {
+            window.open('https://ledger69.vercel.app/', '_blank');
+        }
+    };
 
     return (
         <section id="contact" className="py-24" ref={sectionRef}>
@@ -31,9 +43,8 @@ export default function CTASection() {
                         </p>
                         <a
                             href="https://ledger69.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-accent-amber via-accent-orange to-accent-yellow text-bg-deep font-bold text-lg rounded-2xl transition-all hover:-translate-y-1 hover:shadow-glow-amber no-underline"
+                            onClick={handleLaunchApp}
+                            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-accent-amber via-accent-orange to-accent-yellow text-bg-deep font-bold text-lg rounded-2xl transition-all hover:-translate-y-1 hover:shadow-glow-amber no-underline cursor-pointer"
                         >
                             Launch Abhi&apos;s Ledger
                             <ExternalLink className="w-5 h-5" />
@@ -41,6 +52,11 @@ export default function CTASection() {
                     </div>
                 </motion.div>
             </div>
+
+            <AndroidInstallModal
+                isOpen={isInstallModalOpen}
+                onClose={() => setIsInstallModalOpen(false)}
+            />
         </section>
     );
 }

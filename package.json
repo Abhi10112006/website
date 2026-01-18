@@ -12,6 +12,7 @@
         "@react-three/drei": "^9.122.0",
         "@react-three/fiber": "^8.15.0",
         "@react-three/postprocessing": "^2.15.0",
+        "classnames": "^2.5.1",
         "detect-gpu": "^5.0.0",
         "framer-motion": "^10.16.4",
         "lucide-react": "^0.263.1",

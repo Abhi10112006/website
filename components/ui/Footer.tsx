@@ -1,9 +1,22 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
+import AndroidInstallModal from './AndroidInstallModal';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
+
+    const handleLaunchApp = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (/android/.test(userAgent)) {
+            setIsInstallModalOpen(true);
+        } else {
+            window.open('https://ledger69.vercel.app/', '_blank');
+        }
+    };
 
     return (
         <footer className="py-12 border-t border-border-subtle">
@@ -32,9 +45,8 @@ export default function Footer() {
                     <div className="flex gap-8">
                         <a
                             href="https://ledger69.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-text-secondary hover:text-text-primary transition-colors text-sm no-underline"
+                            onClick={handleLaunchApp}
+                            className="text-text-secondary hover:text-text-primary transition-colors text-sm no-underline cursor-pointer"
                         >
                             Launch App
                         </a>
@@ -57,6 +69,11 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-        </footer>
+
+            <AndroidInstallModal
+                isOpen={isInstallModalOpen}
+                onClose={() => setIsInstallModalOpen(false)}
+            />
+        </footer >
     );
 }

@@ -3,10 +3,22 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import AndroidInstallModal from './AndroidInstallModal';
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
+
+    const handleLaunchApp = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (/android/.test(userAgent)) {
+            setIsInstallModalOpen(true);
+        } else {
+            window.open('https://ledger69.vercel.app/', '_blank');
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,8 +49,8 @@ export default function Navbar() {
         <>
             <nav
                 className={`fixed top-0 left-0 right-0 z-[1000] py-4 transition-all duration-300 ${isScrolled
-                        ? 'bg-black/95 backdrop-blur-xl border-b border-border-subtle'
-                        : 'bg-transparent'
+                    ? 'bg-black/95 backdrop-blur-xl border-b border-border-subtle'
+                    : 'bg-transparent'
                     }`}
             >
                 <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
@@ -71,9 +83,8 @@ export default function Navbar() {
                         <li>
                             <a
                                 href="https://ledger69.vercel.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-6 py-2.5 bg-gradient-to-r from-accent-amber via-accent-orange to-accent-yellow text-bg-deep rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-glow-amber no-underline"
+                                onClick={handleLaunchApp}
+                                className="px-6 py-2.5 bg-gradient-to-r from-accent-amber via-accent-orange to-accent-yellow text-bg-deep rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 hover:shadow-glow-amber no-underline cursor-pointer"
                             >
                                 Launch App →
                             </a>
@@ -127,19 +138,25 @@ export default function Navbar() {
                         ))}
                         <motion.a
                             href="https://ledger69.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                                closeMobileMenu();
+                                handleLaunchApp(e);
+                            }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25 }}
-                            onClick={closeMobileMenu}
-                            className="gradient-text text-2xl font-bold no-underline"
+                            className="gradient-text text-2xl font-bold no-underline cursor-pointer"
                         >
                             Launch App →
                         </motion.a>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <AndroidInstallModal
+                isOpen={isInstallModalOpen}
+                onClose={() => setIsInstallModalOpen(false)}
+            />
         </>
     );
 }

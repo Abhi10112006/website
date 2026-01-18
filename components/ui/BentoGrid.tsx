@@ -15,18 +15,19 @@ const features = [
         visual: 'trust-score',
     },
     {
-        icon: <QrCode className="w-8 h-8 text-white/90" />,
+        icon: <QrCode className="w-8 h-8 text-accent-amber" />,
         title: 'UPI QR Code Generator',
         description:
             'Generate custom payment cards with specific amounts. Share directly to WhatsApp or let friends scan to pay instantly via any UPI app. No more "I\'ll pay you later" excuses.',
         size: 'large',
+        visual: 'qr-code',
     },
     {
         icon: '🧮',
         title: 'Smart Interest',
         description:
             'Daily, monthly, or yearly rates. Even supports "no interest if paid by deadline" deals.',
-        visual: undefined,
+        // visual removed as requested
     },
     {
         icon: '📊',

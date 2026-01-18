@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, ArrowDown } from 'lucide-react';
+import AndroidInstallModal from './AndroidInstallModal';
 
 const currencies = ['Rupee', 'Dollar', 'Euro', 'Pound', 'Yen'];
 
@@ -10,8 +11,19 @@ export default function Hero() {
     const [currentWord, setCurrentWord] = useState('Rupee');
     const [displayText, setDisplayText] = useState('Rupee');
     const [isDeleting, setIsDeleting] = useState(false);
+    const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true });
+
+    const handleLaunchApp = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (/android/.test(userAgent)) {
+            setIsInstallModalOpen(true);
+        } else {
+            window.open('https://ledger69.vercel.app/', '_blank');
+        }
+    };
 
     // Typewriter effect
     useEffect(() => {
@@ -133,8 +145,7 @@ export default function Hero() {
                     >
                         <motion.a
                             href="https://ledger69.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            onClick={handleLaunchApp}
                             ref={primaryBtn.ref}
                             onMouseMove={primaryBtn.handleMouse}
                             onMouseLeave={primaryBtn.reset}
@@ -183,6 +194,11 @@ export default function Hero() {
                     </motion.div>
                 </div>
             </div>
-        </section>
+
+            <AndroidInstallModal
+                isOpen={isInstallModalOpen}
+                onClose={() => setIsInstallModalOpen(false)}
+            />
+        </section >
     );
 }
